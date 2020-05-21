@@ -128,7 +128,7 @@ img {max-width: 100%;
 }
 
 #third .col-md-3{
-    padding-bottom: 50px;
+    padding-bottom: 25px;
 }
 
 #third .outer{
@@ -137,6 +137,27 @@ img {max-width: 100%;
 #third .outer:hover {
     BOX-SHADOW: 0 0 8PX 0 rgba(0,0,0,1);
 }
+
+#third #btnmore {
+    color: white;
+    background-color: #00B4D8;
+    padding: 11px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 18px;
+}
+#third #more1 img {
+ 
+    display:none;
+}
+#third .running {
+    display:none;
+}
+#third #more1 .innertext {
+
+    display:none;
+}
+
 
 
 #second .innertext {

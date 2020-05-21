@@ -34,7 +34,9 @@
                     $('#img3').attr("src", Jdata.img3)
                     $('#href3').attr("href", Jdata.href3)
                     $('.running').attr('style', 'display: none; ')
-
+                    var imgheight = $('img0').load(function () {
+                        this.height;
+                    }); 
                 },
                 error: function () {
                     $('#new0').html("<h4>本日無更新</h4>")
@@ -63,6 +65,16 @@
                 return false;
             });
         });
+
+        // div展開
+        $(function () {
+            $('#btnmore').click(function () {
+                $("#third #more1 img").slideDown(1000);
+                $("#third #more1 .innertext").slideDown(1000);
+                $('#btnmore').fadeOut(500);
+            });
+        });
+        
     </script>
    
     <title>動畫瘋自動推播</title>
@@ -119,15 +131,15 @@
             </div>
             <div class='row'>
                 <div class='col-md-3'>
-                    <div class='outer' >
-                        <a  id="href0" >
-                            <div class='upper' >
+                    <div class='outer'>
+                        <a id="href0">
+                            <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img0">
-                                    <div class="running">
-                                        <div class="spinner-border" role="status" style="position: absolute;top:40%;left:45%;" >
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
+                                <div class="running">
+                                    <div class="spinner-border" role="status" style="position: absolute;top:40%;left:45%;">
+                                        <span class="sr-only">Loading...</span>
                                     </div>
+                                </div>
                                 <div class='innertext' id="new0">
                                     <span>幫我稱十秒</span>
                                     <h4>載入中...</h4>
@@ -202,6 +214,99 @@
                             </div>
                         </a>
                     </div>
+                </div>
+            </div>
+
+            <div class='row' id="more1">
+                <div class='col-md-3'>
+                    <div class='outer'>
+                        <a id="href0">
+                            <div class='upper'>
+                                <img src='https://i.imgur.com/2FYaJGi.jpg' id="img0">
+                                <div class="running">
+                                    <div class="spinner-border" role="status" style="position: absolute;top:40%;left:45%;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class='innertext' id="new0">
+                                    <span>幫我稱十秒</span>
+                                    <h4>載入中...</h4>
+
+                                </div>
+                            </div>
+                            <div class='lower'>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class='col-md-3'>
+                    <div class='outer'>
+                        <a id="href1">
+                            <div class='upper'>
+                                <img src='https://i.imgur.com/2FYaJGi.jpg' id="img1">
+                                <div class="running">
+                                    <div class="spinner-border" role="status" style="position: absolute;top:40%;left:45%;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class='innertext' id="new1">
+                                    <span>幫我稱十秒</span>
+                                    <h4>載入中...</h4>
+                                </div>
+                            </div>
+                            <div class='lower'>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class='col-md-3'>
+                    <div class='outer'>
+                        <a id="href2">
+                            <div class='upper'>
+                                <img src='https://i.imgur.com/2FYaJGi.jpg' id="img2">
+                                <div class="running">
+                                    <div class="spinner-border" role="status" style="position: absolute;top:40%;left:45%;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class='innertext' id="new2">
+                                    <span>幫我稱十秒</span>
+                                    <h4>載入中...</h4>
+                                </div>
+                            </div>
+                            <div class='lower'>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class='col-md-3'>
+                    <div class='outer'>
+                        <a id="href3">
+                            <div class='upper'>
+                                <img src='https://i.imgur.com/2FYaJGi.jpg' id="img3">
+                                <div class="running">
+                                    <div class="spinner-border" role="status" style="position: absolute;top:40%;left:45%;">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class='innertext' id="new3">
+                                    <span>幫我稱十秒</span>
+                                    <h4>載入中...</h4>
+                                </div>
+                            </div>
+                            <div class='lower'>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class='col-md-12 text-center'>
+                    <a class="btn" id="btnmore">展開更多</a>
                 </div>
             </div>
         </div>
