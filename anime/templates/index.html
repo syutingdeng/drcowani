@@ -74,7 +74,13 @@
                 $('#btnmore').fadeOut(500);
             });
         });
-        
+
+        //alert
+        $(function () {
+            $("a").click(function () {
+                alert($(this).attr("id") + " " + $(this).attr("href") + " " + $('img', $(this)).attr('src'))
+            });
+        })
     </script>
    
     <title>動畫瘋自動推播</title>
@@ -94,8 +100,11 @@
                             <a class="nav-link" href="#">首頁 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"id="btn1">推薦動畫</a>
-                            
+                            <a class="nav-link" href="#" id="btn1">推薦動畫</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="myani.html" id="btn1">近期瀏覽</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://ani.gamer.com.tw/">巴哈姆特動畫瘋</a>
@@ -132,7 +141,7 @@
             <div class='row'>
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href0">
+                        <a id="href0"  target="_blank" >
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img0">
                                 <div class="running">
@@ -154,7 +163,7 @@
                 </div>
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href1">
+                        <a id="href1" target="_blank">
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img1">
                                 <div class="running">
@@ -175,7 +184,7 @@
                 </div>
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href2">
+                        <a id="href2" target="_blank">
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img2">
                                 <div class="running">
@@ -196,7 +205,7 @@
                 </div>
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href3">
+                        <a id="href3" target="_blank">
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img3">
                                 <div class="running">
@@ -220,7 +229,7 @@
             <div class='row' id="more1">
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href0">
+                        <a id="href4" target="_blank">
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img0">
                                 <div class="running">
@@ -242,7 +251,7 @@
                 </div>
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href1">
+                        <a id="href5" target="_blank">
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img1">
                                 <div class="running">
@@ -263,7 +272,7 @@
                 </div>
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href2">
+                        <a id="href6" target="_blank">
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img2">
                                 <div class="running">
@@ -284,7 +293,7 @@
                 </div>
                 <div class='col-md-3'>
                     <div class='outer'>
-                        <a id="href3">
+                        <a id="href7" target="_blank">
                             <div class='upper'>
                                 <img src='https://i.imgur.com/2FYaJGi.jpg' id="img3">
                                 <div class="running">
