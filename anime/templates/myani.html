@@ -13,8 +13,24 @@
     <script src="/static/scripts/index.js"></script>
     <script src="/static/scripts/jquery-1.10.2.js"></script>
     <script>var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="383307086119-dhr72vmv7bqv344jb07bg94o9aeg7vff.apps.googleusercontent.com">
+
     <script type=text/javascript>
-       
+
+    </script>
+    <script>
+        //google sign in後
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            var username = profile.getName();
+            var usermail = profile.getEmail();
+            document.getElementById("googlesignin").style.visibility = "hidden";
+            document.getElementById("googlesignin2").innerHTML = "歡迎你，" + username;
+            document.getElementById("googlesignin2").style.visibility = "visible";
+            alert('Email: ' + usermail + '  Name:' + username);
+
+        }
     </script>
 
     <title>動畫瘋自動推播</title>
@@ -37,9 +53,13 @@
                             <a class="nav-link" href="myani.html" id="btn1">近期瀏覽</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://ani.gamer.com.tw/">巴哈姆特動畫瘋</a>
+                            <a class="nav-link" href="https://ani.gamer.com.tw/" target="_blank">巴哈姆特動畫瘋</a>
                         </li>
                     </ul>
+                </div>
+                <div class="g-signin2" data-onsuccess="onSignIn" id="googlesignin"></div>
+                <div id="googlesignin2" style="color: white;font-weight: 600;">
+
                 </div>
             </nav>
         </div>
