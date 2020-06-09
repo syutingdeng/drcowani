@@ -11,7 +11,8 @@ from anime.main import newani
 from flask import jsonify
 from google.oauth2 import id_token
 from google.auth.transport import requests
-GOOGLE_OAUTH2_CLIENT_ID = '1042165561001-kqem5vo0b53id5bqh4nj0afl60sje7ch.apps.googleusercontent.com'
+
+
 
 @app.route('/')
 @app.route('/home')
@@ -38,4 +39,8 @@ def myanime():
         title='近期瀏覽',
         
     )
-
+    id_info = id_token.verify_oauth2_token(
+            token,
+            requests.Request(),
+            GOOGLE_OAUTH2_CLIENT_ID
+    )
