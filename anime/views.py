@@ -9,14 +9,16 @@ import requests
 from bs4 import BeautifulSoup as bs
 from anime.main import newani
 from flask import jsonify
-
+from google.oauth2 import id_token
+from google.auth.transport import requests
+GOOGLE_OAUTH2_CLIENT_ID = '1042165561001-kqem5vo0b53id5bqh4nj0afl60sje7ch.apps.googleusercontent.com'
 
 @app.route('/')
 @app.route('/home')
 def home():
     """Renders the home page."""
     return render_template(
-        'myani.html',
+        'index.html',
         title='Home Page',
         year=datetime.now().year,
     )
@@ -28,23 +30,12 @@ def new():
                               result3=newani(3,0),img3=newani(3,1),href3=newani(3,2))
 
 
-@app.route('/contact')
-def contact():
+@app.route('/myanime')
+def myanime():
     """Renders the contact page."""
     return render_template(
-        'contact.html',
-        title='Contact',
-        year=datetime.now().year,
-        message='Your contact page.'
-    )
-
-@app.route('/about')
-def about():
-    """Renders the about page."""
-    return render_template(
-        'about.html',
-        title='About',
-        year=datetime.now().year,
-        message='Your application description page.'
+        'myani.html',
+        title='近期瀏覽',
+        
     )
 
