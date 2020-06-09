@@ -81,16 +81,24 @@
 
         //alert
         $(function () {
-            $("third a").click(function () {
-                alert($(this).attr("id") + " " + $(this).attr("href") + " " + $('img', $(this)).attr('src'))
+            $("#third a").click(function () {
+                alert($('.innertext', $(this)).text() + " " + $(this).attr("href") + " " + $('img', $(this)).attr('src'))
             });
         })
     </script>
+
+
     <script>
+        //google sign in後
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            alert('Email: ' + profile.getEmail());
+            var username = profile.getName();
+            var usermail = profile.getEmail();
+            document.getElementById("googlesignin").style.visibility = "hidden";
+            document.getElementById("googlesignin2").innerHTML = "歡迎你，"+username;
+            document.getElementById("googlesignin2").style.visibility = "visible";
+            alert('Email: ' + usermail+'  Name:'+username);
+
         }
     </script>
 
@@ -123,7 +131,10 @@
 
                     </ul>
                 </div>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <div class="g-signin2" data-onsuccess="onSignIn" id="googlesignin"></div>
+                <div id="googlesignin2">
+                    
+                </div>
             </nav>
            
         </div>
