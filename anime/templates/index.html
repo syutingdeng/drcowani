@@ -14,6 +14,9 @@
     <script src="/static/scripts/index.js"></script>
     <script src="/static/scripts/jquery-1.10.2.js"></script>
     <script>var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="383307086119-dhr72vmv7bqv344jb07bg94o9aeg7vff.apps.googleusercontent.com">
+
     <script type=text/javascript>
         $(document).ready(function () {
             $.ajax({
@@ -75,6 +78,7 @@
             });
         });
 
+
         //alert
         $(function () {
             $("third a").click(function () {
@@ -82,13 +86,20 @@
             });
         })
     </script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            alert('Email: ' + profile.getEmail());
+        }
+    </script>
 
     <title>動畫瘋自動推播</title>
 
 </head>
 <body >
     <header>
-        <div class="container" >
+        <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="#" style="color: white;font-weight: 800;">卡通瘋</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,9 +120,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="https://ani.gamer.com.tw/">巴哈姆特動畫瘋</a>
                         </li>
+
                     </ul>
                 </div>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
             </nav>
+           
         </div>
     </header>
 
