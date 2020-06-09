@@ -19,6 +19,7 @@
     <RootNamespace>anime</RootNamespace>
     <InterpreterId>
     </InterpreterId>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="drcowani - Web Deploy.pubxml" />
+    <Content Include="anime\templates\myani.html" />
     <Content Include="README.md" />
     <Content Include="anime\static\content\style.css" />
     <Content Include="anime\static\image\starburst.jpg" />
