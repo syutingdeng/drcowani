@@ -9,8 +9,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 from anime.main import newani
 from flask import jsonify
-from google.oauth2 import id_token
-from google.auth.transport import requests
 
 
 
@@ -38,9 +36,4 @@ def myanime():
         'myani.html',
         title='近期瀏覽',
         
-    )
-    id_info = id_token.verify_oauth2_token(
-            token,
-            requests.Request(),
-            GOOGLE_OAUTH2_CLIENT_ID
     )
