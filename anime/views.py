@@ -9,7 +9,7 @@ from anime.main import newani
 from flask import jsonify
 from google.oauth2 import id_token
 from google.auth.transport import requests
-
+import sqlite3
 
 @app.route('/')
 @app.route('/home')
@@ -41,3 +41,9 @@ def google_sign_in():
     mail = request.json['email']
     print("這是電子郵件"+mail)
     return "ok"
+
+db=sqlite3.connect("anime.sqlite3")
+c = db.cursor()
+c.execute("insert into ani(mail,data) values(?,?)",("mail","data"))
+c.commit()
+c.close()

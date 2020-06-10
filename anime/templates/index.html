@@ -97,7 +97,7 @@
             document.getElementById("googlesignin").style.visibility = "hidden";
             document.getElementById("googlesignin2").innerHTML = "歡迎你，"+username;
             document.getElementById("googlesignin2").style.visibility = "visible";
-            alert('Email: ' + usermail + '  Name:' + username);
+           // alert('Email: ' + usermail + '  Name:' + username);
             $.ajax({
                 type: "post",
                 url: $SCRIPT_ROOT+"/google_sign_in",
