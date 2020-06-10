@@ -40,3 +40,4 @@ def myanime():
 def google_sign_in():
     mail = request.json['email']
     print("這是電子郵件"+mail)
+    return "ok"
