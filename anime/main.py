@@ -2,14 +2,16 @@ import requests
 import re
 from bs4 import BeautifulSoup as bs
 from datetime import datetime
-
-
+import time
+import sys
+import os
 
 
 def newani(n,m):
     try:
         req = requests.session()
         r = req.get('https://ani.gamer.com.tw/')
+
         source = bs(r.text,'html.parser')
         soup = source.find_all(class_='newanime-title')
         title=soup[n].text.strip()

@@ -3,13 +3,12 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import render_template,request
 from anime import app
-import requests
-from bs4 import BeautifulSoup as bs
 from anime.main import newani
 from flask import jsonify
-
+from google.oauth2 import id_token
+from google.auth.transport import requests
 
 
 @app.route('/')
@@ -37,3 +36,7 @@ def myanime():
         title='近期瀏覽',
         
     )
+@app.route('/google_sign_in', methods=['POST'])
+def google_sign_in():
+    mail = request.json['email']
+    print(mail)

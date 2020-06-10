@@ -97,10 +97,22 @@
             document.getElementById("googlesignin").style.visibility = "hidden";
             document.getElementById("googlesignin2").innerHTML = "歡迎你，"+username;
             document.getElementById("googlesignin2").style.visibility = "visible";
-            alert('Email: ' + usermail+'  Name:'+username);
+            alert('Email: ' + usermail + '  Name:' + username);
+            $.ajax({
+                type: "post",
+                url: "google_sign_in",
+                data: JSON.stringify({ 'email': usermail }),
+                success: function () {
+                    console.log('login success')
+                },
+                dataType: 'application/json',
+                contentType: "application/json"
+
+            });
 
         }
     </script>
+    
 
     <title>動畫瘋自動推播</title>
 
