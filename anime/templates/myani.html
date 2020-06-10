@@ -24,6 +24,8 @@
                 dataType: "json",
                 success: function (Jdata) {
                     $('#new0').html(Jdata.anidata)
+                    $('#img0').attr("src", Jdata.aniimg)
+                    $('#href0').attr("href", Jdata.anisrc)
                     $('.running').attr('style', 'display: none; ')
                     var imgheight = $('img0').load(function () {
                         this.height;

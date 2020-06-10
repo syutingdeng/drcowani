@@ -77,10 +77,7 @@
     <Content Include="anime\static\scripts\respond.js" />
     <Content Include="anime\static\scripts\respond.min.js" />
     <Content Include="anime\static\scripts\_references.js" />
-    <Content Include="anime\templates\about.html" />
-    <Content Include="anime\templates\contact.html" />
     <Content Include="anime\templates\index.html" />
-    <Content Include="anime\templates\layout.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

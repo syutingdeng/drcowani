@@ -30,24 +30,36 @@ def new():
 
 
 myanidata = " "
+myanisrc = " "
+myaniimg = " "
+mail= " "
 @app.route('/google_sign_in', methods=['POST'])
 def google_sign_in():
-    global myanidata
-    mail = str(request.json['email'])
-    print("郵件"+mail)
-    db=sqlite3.connect("./anime/anime.sqlite3")
-    c = db.cursor()
-    c.execute("select * from ani where mail=?",[mail])
-    ret = c.fetchall()
-    myanidata = ret[0][1]
-    print(ret[0][1])
-    db.commit()
-    db.close()
-    return "ok"
+    try:
+        global myanidata
+        global myanisrc 
+        global myaniimg
+        global mail
+        mail = str(request.json['email'])
+        print("郵件"+mail)
+        db=sqlite3.connect("./anime/anime.sqlite3")
+        c = db.cursor()
+        c.execute("select * from ani where mail=? order by id desc",[mail])
+        ret = c.fetchall()
+        myanidata = ret[0][2]
+        myanisrc = ret[0][3]
+        myaniimg = ret[0][4]
+        print(myanidata+" "+myanisrc+" "+ myaniimg)
+        db.commit()
+        db.close()
+        return "ok"
+    except:
+        return "fail"
+
+   
 
 @app.route('/myanime')
 def myanime():
-    print(myanidata)
     return render_template(
         'myani.html',
         title="近期瀏覽",
@@ -55,11 +67,22 @@ def myanime():
     )
 @app.route("/animedata")
 def animedata():
-    return jsonify(anidata=myanidata)
+    return jsonify(anidata=myanidata,anisrc=myanisrc,aniimg=myaniimg)
 @app.route("/savedata",methods=['POST'])
 def savedata():
-    data = str(request.json(['data']))
-    print(data)
+    global myanidata
+    title = str(request.json['title'])
+    link= str(request.json['link'])
+    img= str(request.json['img'])
+    db=sqlite3.connect("./anime/anime.sqlite3")
+    c = db.cursor()
+    c.execute("insert into ani (mail,title,link,img) values (?,?,?,?)",(mail,title,link,img))
+    c.execute("select * from ani where mail=? order by id desc",[mail])
+    ret = c.fetchall()
+    myanidata = ret[0][2]
+    db.commit()
+    db.close()
+    return "ok"
     
     
 

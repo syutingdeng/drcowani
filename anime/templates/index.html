@@ -83,11 +83,18 @@
         $(function () {
             $("#third a").click(function () {
                 alert($('h4', $(this)).text() + " " + $(this).attr("href") + " " + $('img', $(this)).attr('src'))
-                var data = $('h4', $(this)).text() + " " + $(this).attr("href") + " " + $('img', $(this)).attr('src')
+                var title = $('h4', $(this)).text() 
+                var link = $(this).attr("href") 
+                var img = $('img', $(this)).attr('src')
+                
                 $.ajax({
                     type: "post",
                     url: $SCRIPT_ROOT + "/savedata",
-                    data: JSON.stringify({ 'data': data}),
+                    data: JSON.stringify({
+                        'title': title,
+                        'link': link,
+                        'img':img
+                    }),
                     success: function () {
                         console.log('login success')
                     },
