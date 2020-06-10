@@ -31,6 +31,13 @@ def new():
 @app.route('/myanime')
 def myanime():
     """Renders the contact page."""
+    db=sqlite3.connect("./anime/anime.sqlite3")
+    c = db.cursor()
+    c.execute("select * from ani where mail=?",[str(google_sign_in())])
+    ret = c.fetchall()
+    print(ret[0])
+    db.commit()
+    db.close()
     return render_template(
         'myani.html',
         title='近期瀏覽',
@@ -40,10 +47,12 @@ def myanime():
 def google_sign_in():
     mail = request.json['email']
     print("這是電子郵件"+mail)
-    return "ok"
+    return mail
 
-db=sqlite3.connect("anime.sqlite3")
-c = db.cursor()
-c.execute("insert into ani(mail,data) values(?,?)",("mail","data"))
-c.commit()
-c.close()
+
+#db=sqlite3.connect("./anime/anime.sqlite3")
+#c = db.cursor()
+#c.execute("select * from ani where mail=?",(mail))
+#db.commit()
+#db.close()
+
