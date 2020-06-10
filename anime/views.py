@@ -11,6 +11,7 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 import sqlite3
 
+mail=" "
 @app.route('/')
 @app.route('/home')
 def home():
@@ -31,23 +32,27 @@ def new():
 @app.route('/myanime')
 def myanime():
     """Renders the contact page."""
-    db=sqlite3.connect("./anime/anime.sqlite3")
-    c = db.cursor()
-    c.execute("select * from ani where mail=?",[google_sign_in()])
-    ret = c.fetchall()
-    print(ret[0])
-    db.commit()
-    db.close()
-    return render_template(
-        'myani.html',
-        title='近期瀏覽',
+    try:
+        db=sqlite3.connect("./anime/anime.sqlite3")
+        c = db.cursor()
+        c.execute("select * from ani where mail=?",[mail])
+        ret = c.fetchall()
+        print(ret[0])
+        db.commit()
+        db.close()
+        return render_template(
+            'myani.html',
+            title='近期瀏覽',
         
-    )
+        )
+    except:
+        return ("login error")
+
 @app.route('/google_sign_in', methods=['POST'])
 def google_sign_in():
-    mail = request.json['email']
-    print("這是電子郵件"+mail)
-    return str(mail)
+    mail = str(request.json['email'])
+    print("郵件"+mail)
+    return "ok"
 
 
 #db=sqlite3.connect("./anime/anime.sqlite3")
