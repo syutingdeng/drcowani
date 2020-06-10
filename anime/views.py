@@ -39,4 +39,4 @@ def myanime():
 @app.route('/google_sign_in', methods=['POST'])
 def google_sign_in():
     mail = request.json['email']
-    print(mail)
+    print("這是電子郵件"+mail)

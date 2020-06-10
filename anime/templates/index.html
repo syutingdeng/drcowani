@@ -100,7 +100,7 @@
             alert('Email: ' + usermail + '  Name:' + username);
             $.ajax({
                 type: "post",
-                url: "/google_sign_in",
+                url: $SCRIPT_ROOT+"/google_sign_in",
                 data: JSON.stringify({ 'email': usermail }),
                 success: function () {
                     console.log('login success')
