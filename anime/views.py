@@ -71,6 +71,9 @@ def animedata():
 @app.route("/savedata",methods=['POST'])
 def savedata():
     global myanidata
+    global myanisrc 
+    global myaniimg
+    global mail
     title = str(request.json['title'])
     link= str(request.json['link'])
     img= str(request.json['img'])
@@ -80,6 +83,8 @@ def savedata():
     c.execute("select * from ani where mail=? order by id desc",[mail])
     ret = c.fetchall()
     myanidata = ret[0][2]
+    myanisrc = ret[0][3]
+    myaniimg = ret[0][4]
     db.commit()
     db.close()
     return "ok"
