@@ -83,6 +83,18 @@
         $(function () {
             $("#third a").click(function () {
                 alert($('h4', $(this)).text() + " " + $(this).attr("href") + " " + $('img', $(this)).attr('src'))
+                var data = $('h4', $(this)).text() + " " + $(this).attr("href") + " " + $('img', $(this)).attr('src')
+                $.ajax({
+                    type: "post",
+                    url: $SCRIPT_ROOT + "/savedata",
+                    data: JSON.stringify({ 'data': data}),
+                    success: function () {
+                        console.log('login success')
+                    },
+                    dataType: 'application/json',
+                    contentType: "application/json"
+
+                });
             });
         })
     </script>
@@ -109,6 +121,7 @@
                 contentType: "application/json"
 
             });
+      
 
         }
     </script>

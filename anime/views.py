@@ -11,7 +11,7 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 import sqlite3
 
-mail=" "
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -29,30 +29,39 @@ def new():
                               result3=newani(3,0),img3=newani(3,1),href3=newani(3,2))
 
 
-@app.route('/myanime')
-def myanime():
-    """Renders the contact page."""
-    try:
-        db=sqlite3.connect("./anime/anime.sqlite3")
-        c = db.cursor()
-        c.execute("select * from ani where mail=?",[mail])
-        ret = c.fetchall()
-        print(ret[0])
-        db.commit()
-        db.close()
-        return render_template(
-            'myani.html',
-            title='近期瀏覽',
-        
-        )
-    except:
-        return ("login error")
-
+myanidata = " "
 @app.route('/google_sign_in', methods=['POST'])
 def google_sign_in():
+    global myanidata
     mail = str(request.json['email'])
     print("郵件"+mail)
+    db=sqlite3.connect("./anime/anime.sqlite3")
+    c = db.cursor()
+    c.execute("select * from ani where mail=?",[mail])
+    ret = c.fetchall()
+    myanidata = ret[0][1]
+    print(ret[0][1])
+    db.commit()
+    db.close()
     return "ok"
+
+@app.route('/myanime')
+def myanime():
+    print(myanidata)
+    return render_template(
+        'myani.html',
+        title="近期瀏覽",
+        
+    )
+@app.route("/animedata")
+def animedata():
+    return jsonify(anidata=myanidata)
+@app.route("/savedata",methods=['POST'])
+def savedata():
+    data = str(request.json(['data']))
+    print(data)
+    
+    
 
 
 #db=sqlite3.connect("./anime/anime.sqlite3")

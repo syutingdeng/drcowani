@@ -17,6 +17,25 @@
     <meta name="google-signin-client_id" content="383307086119-dhr72vmv7bqv344jb07bg94o9aeg7vff.apps.googleusercontent.com">
 
     <script type=text/javascript>
+        $(document).ready(function () {
+            $.ajax({
+                url: $SCRIPT_ROOT + '/animedata',
+                type: "GET",
+                dataType: "json",
+                success: function (Jdata) {
+                    $('#new0').html(Jdata.anidata)
+                    $('.running').attr('style', 'display: none; ')
+                    var imgheight = $('img0').load(function () {
+                        this.height;
+                    });
+                },
+                error: function () {
+                    $('#new0').html("<h4>本日無更新</h4>")
+                    $('.running').attr('style', 'display: none; ')
+
+                }
+            });
+        });
 
     </script>
     <script>
@@ -29,6 +48,7 @@
             document.getElementById("googlesignin2").innerHTML = "歡迎你，" + username;
             document.getElementById("googlesignin2").style.visibility = "visible";
             alert('Email: ' + usermail + '  Name:' + username);
+           
 
         }
     </script>
