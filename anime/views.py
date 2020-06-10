@@ -33,7 +33,7 @@ def myanime():
     """Renders the contact page."""
     db=sqlite3.connect("./anime/anime.sqlite3")
     c = db.cursor()
-    c.execute("select * from ani where mail=?",[str(google_sign_in())])
+    c.execute("select * from ani where mail=?",[google_sign_in()])
     ret = c.fetchall()
     print(ret[0])
     db.commit()
@@ -47,7 +47,7 @@ def myanime():
 def google_sign_in():
     mail = request.json['email']
     print("這是電子郵件"+mail)
-    return mail
+    return str(mail)
 
 
 #db=sqlite3.connect("./anime/anime.sqlite3")
