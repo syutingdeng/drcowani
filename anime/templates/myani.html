@@ -23,16 +23,17 @@
                 type: "GET",
                 dataType: "json",
                 success: function (Jdata) {
-                    $('#new0').html(Jdata.anidata)
-                    $('#img0').attr("src", Jdata.aniimg)
-                    $('#href0').attr("href", Jdata.anisrc)
-                    $('.running').attr('style', 'display: none; ')
-                    var imgheight = $('img0').load(function () {
-                        this.height;
-                    });
+                    $('#new00').html("<div class='col-md-4'style=\"padding - bottom: 30px; \"><a id=\"href0\" target=\"_blank\" href=\""+Jdata.anisrc+"\"><div class='upper'><img src='"+Jdata.aniimg+"' id=\"img0\"><div class=\"running\"> <div class=\"spinner-border\" role=\"status\" style=\"position: absolute;top:40%;left:45%;\"><span class=\"sr-only\">Loading...</span></div></div><div class='innertext' id=\"new0\"><h4>"+Jdata.anidata+"</h4></div></div><div class='lower'></div></a></div></div >")
+                    //$('#new0').html(Jdata.anidata)
+                   // $('#img0').attr("src", Jdata.aniimg)
+                    //$('#href0').attr("href", Jdata.anisrc)
+                   // $('.running').attr('style', 'display: none; ')
+                   // var imgheight = $('img0').load(function () {
+                  //      this.height; 
+                 //   });
                 },
                 error: function () {
-                    $('#new0').html("<h4>本日無更新</h4>")
+                    $('#new00').html("無相關資料")
                     $('.running').attr('style', 'display: none; ')
 
                 }
@@ -95,29 +96,7 @@
                     <h3>近期瀏覽動畫</h3>
                 </div>
             </div>
-            <div class='row'>
-                <div class='col-md-4'style="padding-bottom: 30px;">
-                    <div class='outer'>
-                        <a id="href0" target="_blank">
-                            <div class='upper'>
-                                <img src='https://i.imgur.com/2FYaJGi.jpg' id="img0">
-                                <div class="running">
-                                    <div class="spinner-border" role="status" style="position: absolute;top:40%;left:45%;">
-                                        <span class="sr-only">Loading...</span>
-                                    </div>
-                                </div>
-                                <div class='innertext' id="new0">
-                                    <span>幫我稱十秒</span>
-                                    <h4>載入中...</h4>
-
-                                </div>
-                            </div>
-                            <div class='lower'>
-
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <div class='row' id="new00">
             </div>
 
         </div>
