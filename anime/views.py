@@ -68,26 +68,14 @@ def animedata():
         elif bbb==12 :
             break
         else :
-            bbb=len(myanidata)
-            for j in range (bbb):
-                if ret[i][2] == myanidata[j]:
-                    break;
-                else:
-                    if j==bbb-1:
-                        myanidata.append(ret[i][2])
-            bbb=len(myanisrc)
-            for j in range (bbb):
-                if ret[i][3] == myanisrc[j]:
-                    break;
-                else:
-                    if j==bbb-1:
-                        myanisrc.append(ret[i][3])
             bbb=len(myaniimg)
             for j in range (bbb):
                 if ret[i][4] == myaniimg[j]:
                     break;
                 else:
                     if j==bbb-1:
+                        myanidata.append(ret[i][2])
+                        myanisrc.append(ret[i][3])
                         myaniimg.append(ret[i][4])
     myanilen=len(myaniimg)
     db.commit()
