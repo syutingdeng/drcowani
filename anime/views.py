@@ -53,13 +53,46 @@ def animedata():
     c = db.cursor()
     c.execute("select * from ani where mail=? order by id desc",[mail])
     ret = c.fetchall()
-    myanidata = ret[0][2]
-    myanisrc = ret[0][3]
-    myaniimg = ret[0][4]
-    print(myanidata+" "+myanisrc+" "+ myaniimg)
+    myanidata = []
+    myanisrc=[]
+    myaniimg=[]
+    aaa=len(ret)
+    print(aaa)
+    bbb=0
+    for i in range(aaa):
+        if i == 0 :
+            myanidata.append(ret[i][2])
+            myanisrc.append(ret[i][3])
+            myaniimg.append(ret[i][4])
+        
+        elif bbb==12 :
+            break
+        else :
+            bbb=len(myanidata)
+            for j in range (bbb):
+                if ret[i][2] == myanidata[j]:
+                    break;
+                else:
+                    if j==bbb-1:
+                        myanidata.append(ret[i][2])
+            bbb=len(myanisrc)
+            for j in range (bbb):
+                if ret[i][3] == myanisrc[j]:
+                    break;
+                else:
+                    if j==bbb-1:
+                        myanisrc.append(ret[i][3])
+            bbb=len(myaniimg)
+            for j in range (bbb):
+                if ret[i][4] == myaniimg[j]:
+                    break;
+                else:
+                    if j==bbb-1:
+                        myaniimg.append(ret[i][4])
+    myanilen=len(myaniimg)
     db.commit()
     db.close()
-    return jsonify(anidata=myanidata,anisrc=myanisrc,aniimg=myaniimg)
+    return jsonify(anidata=myanidata,anisrc=myanisrc,aniimg=myaniimg,anilen=myanilen)
 @app.route("/savedata",methods=['POST'])
 def savedata():
     title = str(request.json['title'])

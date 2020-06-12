@@ -23,8 +23,10 @@
                 type: "GET",
                 dataType: "json",
                 success: function (Jdata) {
-                    $('#new00').html("<div class='col-md-4'style=\"padding - bottom: 30px; \"><a id=\"href0\" target=\"_blank\" href=\""+Jdata.anisrc+"\"><div class='upper'><img src='"+Jdata.aniimg+"' id=\"img0\"><div class=\"running\"> <div class=\"spinner-border\" role=\"status\" style=\"position: absolute;top:40%;left:45%;\"><span class=\"sr-only\">Loading...</span></div></div><div class='innertext' id=\"new0\"><h4>"+Jdata.anidata+"</h4></div></div><div class='lower'></div></a></div></div >")
-                    //$('#new0').html(Jdata.anidata)
+                    for (let index = 0; index < Jdata.anilen; index++) {
+                        $('#new00').append("<div class='col-md-4'style=\"margin-bottom: 25px; \"><a id=\"href0\" target=\"_blank\" href=\"" + Jdata.anisrc[index] + "\"><div class='upper'><img src='" + Jdata.aniimg[index] + "' id=\"img0\"><div class=\"running\"> <div class=\"spinner-border\" role=\"status\" style=\"position: absolute;top:40%;left:45%;\"><span class=\"sr-only\">Loading...</span></div></div><div class='innertext' id=\"new0\"><h4>" + Jdata.anidata[index] + "</h4></div></div><div class='lower'></div></a></div></div >");
+                    }
+                        //$('#new0').html(Jdata.anidata)
                    // $('#img0').attr("src", Jdata.aniimg)
                     //$('#href0').attr("href", Jdata.anisrc)
                    // $('.running').attr('style', 'display: none; ')
