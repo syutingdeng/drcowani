@@ -45,8 +45,6 @@ def google_sign_in():
     except:
         return "fail"
 
-  
-
 @app.route("/animedata")
 def animedata():
     db=sqlite3.connect("./anime/anime.sqlite3")
