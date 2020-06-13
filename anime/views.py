@@ -81,16 +81,19 @@ def animedata():
     return jsonify(anidata=myanidata,anisrc=myanisrc,aniimg=myaniimg,anilen=myanilen)
 @app.route("/savedata",methods=['POST'])
 def savedata():
-    title = str(request.json['title'])
-    link= str(request.json['link'])
-    img= str(request.json['img'])
-    db=sqlite3.connect("./anime/anime.sqlite3")
-    c = db.cursor()
-    c.execute("insert into ani (mail,title,link,img) values (?,?,?,?)",(mail,title,link,img))
-    db.commit()
-    db.close()
-    return "ok"
-    
+    try:
+        title = str(request.json['title'])
+        link= str(request.json['link'])
+        img= str(request.json['img'])
+        db=sqlite3.connect("./anime/anime.sqlite3")
+        c = db.cursor()
+        c.execute("insert into ani (mail,title,link,img) values (?,?,?,?)",(mail,title,link,img))
+        db.commit()
+        db.close()
+        return "ok"
+    except:
+        print("dataerror")
+        return "fail"
     
 
 
